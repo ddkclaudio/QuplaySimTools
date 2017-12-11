@@ -106,24 +106,17 @@ Public Class GamePlugin
 
     'Used by GameEngine to Process Incoming UDP Packets.
     Public Sub Process_PacketRecieved(Text As String) Implements IPlugin_Game.Process_PacketRecieved
-         'Convert string to byte and copy to byte array
-        Dim ByteArray() As Byte = System.Text.Encoding.Default.GetBytes(Text)
-        'Create Gchandle instance and pin variable required
-        Dim MyGC As System.Runtime.InteropServices.GCHandle = System.Runtime.InteropServices.GCHandle.Alloc(MyOutsim_Internal, System.Runtime.InteropServices.GCHandleType.Pinned)
-        'get address of variable in pointer variable
-        Dim AddofLongValue As IntPtr = MyGC.AddrOfPinnedObject()
-        'Copy the memory space to my GCHandle
-        System.Runtime.InteropServices.Marshal.Copy(ByteArray, 0, AddofLongValue, ByteArray.Length)
-        'Direct Cast myGC to my Outsim Object
-        MyOutsim_Internal = DirectCast(MyGC.Target, OutSim)
-        'Free GChandle to avoid memory leaks
-        MyGC.Free()
+        Dim telemetry As String() = Text.Split(New Char() {","c})
 
-        Roll_Output = 42.0F
-        'Get Proper Data out of UDP Packet
-        With MyOutsim_Internal
-
-        End With
+        Roll_Output = CDbl(Val(telemetry(0)))
+        Pitch_Output = CDbl(Val(telemetry(1)))
+        Yaw_Output = CDbl(Val(telemetry(2)))
+        Heave_Output = CDbl(Val(telemetry(3)))
+        Sway_Output = CDbl(Val(telemetry(4)))
+        Surge_Output = CDbl(Val(telemetry(5)))
+        Extra1_Output = CDbl(Val(telemetry(6)))
+        Extra2_Output = CDbl(Val(telemetry(7)))
+        Extra3_Output = CDbl(Val(telemetry(8)))
     End Sub
 
     'Used by GameManager to Patch a Game.

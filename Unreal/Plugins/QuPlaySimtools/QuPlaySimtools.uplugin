@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "QuPlaySimtools",
+	"Description": "UE4.18 plugin to Simtools 2.0",
+	"Category": "Network",
+	"CreatedBy": "QuPlay",
+	"CreatedByURL": "https://clclaudio.wordpress.com",
+	"DocsURL": "https://clclaudio.wordpress.com",
+	"MarketplaceURL": "https://clclaudio.wordpress.com",
+	"SupportURL": "https://clclaudio.wordpress.com",
+	"EnabledByDefault": true,
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "QuPlaySimtools",
+			"Type": "Runtime",
+			"LoadingPhase": "PreLoadingScreen"
+		}
+	]
+}
